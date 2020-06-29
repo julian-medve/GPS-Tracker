@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Gps_again.iml" filepath="$PROJECT_DIR$/Gps_again.iml" group="Gps_again" />
+      <module fileurl="file://$PROJECT_DIR$/app-debug/app-debug.iml" filepath="$PROJECT_DIR$/app-debug/app-debug.iml" group="Gps_again/app-debug" />
+      <module fileurl="file://$PROJECT_DIR$/mobile/mobile.iml" filepath="$PROJECT_DIR$/mobile/mobile.iml" group="Gps_again/mobile" />
+    </modules>
+  </component>
+</project>

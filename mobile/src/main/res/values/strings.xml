@@ -1,0 +1,40 @@
+<resources>
+    <!--<string name="app_name">Android System Application</string> temp old-->
+    <string name="app_name">WhereAboutsMobile</string>
+
+
+    <string name="title_activity_settings">Settings</string>
+
+    <string name="menu_settings">Settings</string>
+
+    <!--<string name="pattern_mobile_key">Mobile Key: %1$s</string>
+    <string name="pattern_transmitted">Transmitted: %1$s</string>
+    <string name="pattern_waypoint">Waypoint: %1$d</string>
+    <string name="pattern_gps">GPS: %1$s</string>
+    <string name="pattern_internet">Internet: %1$s</string>
+    <string name="pattern_location">Location: %1$f:%2$f</string>
+    <string name="pattern_battery">Battery: %1$d%%</string>
+    <string name="pattern_date">Date: %1$s</string>
+    <string name="pattern_altitude">Altitude: %1$f</string>
+    <string name="pattern_speed">Speed: %1$f</string>
+    <string name="pattern_accuracy">Accuracy: %1$d</string>-->
+
+
+    <string name="pattern_mobile_key">Mobile Key: %1$s</string>
+    <string name="pattern_transmitted">Transmitted: %1$s</string>
+    <string name="pattern_waypoint">Waypoint: %1$d</string>
+    <string name="pattern_gps">%1$s</string>
+    <string name="pattern_internet">%1$s</string>
+    <string name="pattern_location">%1$f:%2$f</string>
+    <string name="pattern_battery">%1$d%%</string>
+    <string name="pattern_date">%1$s</string>
+    <string name="pattern_altitude">%1$f</string>
+    <string name="pattern_speed">%1$f</string>
+    <string name="pattern_accuracy">%1$d</string>
+
+
+    <string name="title_activity_splash_screen">SplashScreen</string>
+
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyAQdjZ8q--iZKhIL_50705anw340jzne-0</string>
+
+</resources>

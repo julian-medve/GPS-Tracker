@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TextViewStyle">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingLeft">24dp</item>
+        <item name="android:paddingRight">16dp</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.NoActionBar.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
+</resources>

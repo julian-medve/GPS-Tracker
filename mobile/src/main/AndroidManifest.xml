@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.wheremobile.gpstracker"
+    android:installLocation="internalOnly">
+
+    <uses-feature android:name="android.hardware.location.gps" />
+
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_GPS" />
+    <uses-permission android:name="android.permission.ACCESS_ASSISTED_GPS" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_SYNC_STATS" />
+    <uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION" />
+
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+
+
+    <!--
+    <uses-permission android:name="android.permacission.WRITE_SECURE_SETTINGS" />
+    <uses-permission android:name="android.permission.ACCESS_SUPERUSER" />
+    -->
+    <application
+        android:name=".app.ApplicationClass"
+        android:hardwareAccelerated="true"
+        android:icon="@mipmap/ic_app_icon"
+        android:label="@string/app_name"
+        android:supportsRtl="false"
+        android:theme="@style/BaseAppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity
+            android:name=".activity.DashboardActivity"
+            android:configChanges="orientation|screenSize"
+            android:theme="@style/AppThemeTransparent" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+        <activity
+            android:name=".activity.SplashScreen"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!--
+        <activity-alias
+            android:name="Launcher"
+            android:enabled="true"
+            android:targetActivity=".activity.DashboardActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category
+                    android:name="android.intent.category.LAUNCHER"
+                    tools:node="remove" />
+            </intent-filter>
+        </activity-alias>
+        -->
+
+
+        <!-- <activity -->
+        <!-- android:name=".activity.DashboardActivity" -->
+        <!-- android:theme="@style/AppTheme.NoActionBar"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="android.intent.action.MAIN" /> -->
+        <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+        <!-- </intent-filter> -->
+        <!-- </activity> -->
+
+        <!--<receiver
+            android:name=".SampleDeviceAdminReceiver"
+            android:permission="android.permission.BIND_DEVICE_ADMIN">
+            <intent-filter>
+                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+                &lt;!&ndash;
+                <action android:name="android.app.action.DEVICE_ADMIN_DISABLE_REQUESTED" />
+                <action android:name="android.app.action.DEVICE_ADMIN_DISABLED" />
+                &ndash;&gt;
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.device_admin"
+                android:resource="@xml/device_admin" />
+        </receiver>-->
+
+        <activity
+            android:name=".activity.SettingsActivity"
+            android:theme="@style/PreferencesTheme" />
+
+        <receiver
+            android:name=".receive.BootCompletedReceiver"
+            android:enabled="true"
+            android:process=":boot_receiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".receive.ConnectionReceive">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
+            </intent-filter>
+        </receiver>
+
+        <provider
+            android:name=".provider.GPSProvider"
+            android:authorities="${applicationId}.provider"
+            android:enabled="true"
+            android:exported="false"
+            android:label="GpsTracker Provider"
+            android:multiprocess="true"
+            android:syncable="true" />
+
+        <service
+            android:name=".service.SyncService"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.content.SyncAdapter" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.content.SyncAdapter"
+                android:resource="@xml/syncadapter" />
+        </service>
+
+        <service
+            android:name=".service.AuthenticatorService"
+            android:exported="true"
+            android:process=":auth">
+            <intent-filter>
+                <action android:name="android.accounts.AccountAuthenticator" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.accounts.AccountAuthenticator"
+                android:resource="@xml/authenticator" />
+        </service>
+        <service
+            android:name=".service.UserLocationService"
+            android:enabled="true" />
+        <service
+            android:name=".service.SynchronizeService"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="action.alarm.set" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="action.alarm.cancel" />
+            </intent-filter>
+        </service>
+
+        <receiver
+            android:name=".receive.SyncAlarmReceiver"
+            android:enabled="true" />
+        <receiver
+            android:name=".receive.TimerReceiver"
+            android:enabled="true" />
+
+        <receiver
+            android:name=".receive.RestartAppReceiver"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="action.alarm.run.run" />
+            </intent-filter>
+        </receiver>
+        <!--
+             <service
+             android:name="com.letmecode.alivegpsproject.TurnOnGpsService"
+             android:enabled="true"
+             android:exported="false"/>
+        -->
+
+        <service
+            android:name=".service.TurnOnGpsServiceNew"
+            android:enabled="true"
+            android:exported="false" />
+
+        <receiver android:name=".receive.GpsStateBroadcastReceiverNew">
+            <intent-filter>
+                <action android:name="android.location.PROVIDERS_CHANGED" />
+            </intent-filter>
+        </receiver>
+        <!--
+        <receiver android:name="com.letmecode.alivegpsproject.GpsStateBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.location.PROVIDERS_CHANGED" />
+            </intent-filter>
+        </receiver>
+        -->
+        <service
+            android:name=".schedular.UploadServerDataIntentService"
+            android:exported="false" />
+        <!--    <service
+                android:name=".schedular.NetworkService"
+                android:directBootAware="true"
+                android:exported="true"
+                android:permission="com.google.android.gms.permission.BIND_NETWORK_TASK_SERVICE"
+                tools:ignore="UnusedAttribute">
+                <intent-filter>
+                    <action android:name="com.google.android.gms.gcm.ACTION_TASK_READY" />
+                </intent-filter>
+            </service>
+    -->
+        <!--<service
+            android:exported="false"
+            android:name=".schedular.LocationSchedulerService">
+            <intent-filter>
+                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE"/>
+            </intent-filter>
+        </service>-->
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="ff37c46f98bb666634e6cd4da228851fb7b043e3" />
+
+        <service android:name=".service.ActivityRecognizedService" />
+
+        <receiver
+            android:name=".service.RestartServiceReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.SERVICE_STOPPED" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>

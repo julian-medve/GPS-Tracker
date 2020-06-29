@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="update_entry">
+        <item>30 secs</item>
+        <item>1 minute</item>
+        <item>1.5 minutes</item>
+        <item>2.5 minutes</item>
+        <item>3 minutes</item>
+    </string-array>
+
+    <string-array name="update_values">
+        <item>30</item>
+        <item>60</item>
+        <item>90</item>
+        <item>150</item>
+        <item>180</item>
+    </string-array>
+
+    <string-array name="synch_entry">
+        <item>3.5 minutes</item>
+        <item>4 minutes</item>
+        <item>5 minutes</item>
+        <item>6 minutes</item>
+        <item>10 minutes</item>
+    </string-array>
+
+    <string-array name="synch_values">
+        <item>210</item>
+        <item>240</item>
+        <item>300</item>
+        <item>360</item>
+        <item>600</item>
+    </string-array>
+</resources>

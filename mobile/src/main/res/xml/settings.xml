@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fitsSystemWindows="true">
+
+    <android.support.v7.preference.ListPreference
+        android:defaultValue="60"
+        android:entries="@array/update_entry"
+        android:entryValues="@array/update_values"
+        android:key="settings_update_interval"
+        android:summary="Every N seconds, the data will be updated"
+        android:title="Auto Refresh Frequency" />
+
+    <!--<android.support.v7.preference.EditTextPreference-->
+    <!--android:defaultValue="30"-->
+    <!--android:dialogTitle="Interval update"-->
+    <!--android:inputType="number"-->
+    <!--android:key="settings_update_interval"-->
+    <!--android:summary="Every N seconds, the data will be updated"-->
+    <!--android:title="Interval update" />-->
+
+    <android.support.v7.preference.ListPreference
+        android:defaultValue="210"
+        android:entries="@array/synch_entry"
+        android:entryValues="@array/synch_values"
+        android:key="settings_synchronize_interval"
+        android:summary="Every N minutes, the data will be synchronized with server"
+        android:title="Auto Synchronize Frequency" />
+
+    <!--<android.support.v7.preference.EditTextPreference-->
+    <!--android:defaultValue="3"-->
+    <!--android:dialogTitle="Interval synchronize"-->
+    <!--android:inputType="number"-->
+    <!--android:key="settings_synchronize_interval"-->
+    <!--android:summary="Every N minutes, the data will be synchronized with server"-->
+    <!--android:title="Interval synchronize" />-->
+    <CheckBoxPreference
+        android:checked="true"
+        android:defaultValue="true"
+        android:key="settings_synchronize"
+        android:title="Synchronize with server"
+        android:widgetLayout="@layout/lay_switch" />
+    <!--
+        <SwitchPreference
+            android:checked="true"
+            android:defaultValue="true"
+            android:key="settings_synchronize"
+            android:title="Synchronize with server"
+            android:layout="@layout/lay_switch"/>
+    -->
+
+</PreferenceScreen>
